@@ -54,8 +54,3 @@ def send_mail(send_from = 'flowers_mail@126.com', send_to = ['403270940@qq.com',
     smtp.login(username, password)
     smtp.sendmail(send_from, send_to, msg.as_string())
     smtp.quit()
-
-now_time = datetime.datetime.now().strftime('%Y-%m-%d')
-path=os.path.join(os.getcwd(),now_time + '.xls')
-files = [path]
-send_mail(files=files,use_tls=False)
