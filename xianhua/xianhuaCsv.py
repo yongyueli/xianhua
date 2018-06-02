@@ -40,7 +40,7 @@ def fillSheet(coll,sheet1,today_date,yestoday_date):
                 yest_doc = {}
             sheet1.write(index, 7, doc.get('sold_num',0) - yest_doc.get('sold_num',0))
             sheet1.write(index, 8, yest_doc.get('price',''))
-            sheet1.write(index, 9, (doc.get('price',0) - yest_doc.get('price',0)) / doc.get('price',1))
+            sheet1.write(index, 9, (doc.get('price',0) - yest_doc.get('price',0)))
             index = index + 1
         # sheet1.write_merge(i - count,i - 1,0,0,tag_name)
         # sheet1.write_merge(i - count,i - 1,1,1,sub_tag_name)
@@ -56,5 +56,6 @@ coll = getCollection()
 sheet1 = addHead(workbook)
 fillSheet(coll,sheet1,today_date,yest_date)
 workbook.save(path)
+
 #send mail
-mail.send_mail(subject = 'flowers-' + today_date,files=[path])
+mail.send_mail(subject = '花库数据统计' + today_date,message = 'Hi all,\n附件中是今天的花库数据统计，请查收',files=[path])

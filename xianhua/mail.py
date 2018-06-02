@@ -10,7 +10,7 @@ from email.utils import COMMASPACE, formatdate
 from email import encoders
 import datetime
 
-def send_mail(send_from = 'flowers_mail@126.com', send_to = ['403270940@qq.com','2094562531@qq.com'], subject = 'flowers', 
+def send_mail(send_from = 'flowers_mail@126.com', send_to = ['403270940@qq.com','986009512@qq.com'], subject = 'flowers', 
             message = '', files=[],server="smtp.126.com", port=25, 
             username='flowers_mail@126.com', password='1234asdfASDF',use_tls=False):
     """Compose and send email with provided info and attachments.
@@ -33,7 +33,7 @@ def send_mail(send_from = 'flowers_mail@126.com', send_to = ['403270940@qq.com',
     # msg['Date'] = formatdate(localtime=True)
     # msg['Subject'] = subject
 
-    msg['From'] = "{}".format(send_from)
+    msg['From'] = send_from
     msg['To'] = ",".join(send_to)
     msg['Subject'] = subject
 
@@ -54,3 +54,5 @@ def send_mail(send_from = 'flowers_mail@126.com', send_to = ['403270940@qq.com',
     smtp.login(username, password)
     smtp.sendmail(send_from, send_to, msg.as_string())
     smtp.quit()
+
+send_mail(subject='2018-05-30号记录',message='附件中是今天的记录，请查收',files=['../2018-05-27.xls'],send_to=['403270940@qq.com'])
