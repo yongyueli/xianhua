@@ -56,6 +56,6 @@ coll = getCollection()
 sheet1 = addHead(workbook)
 fillSheet(coll,sheet1,today_date,yest_date)
 workbook.save(path)
-
+ 
 #send mail
 mail.send_mail(subject = '花库数据统计' + today_date,message = 'Hi all,\n附件中是今天的花库数据统计，请查收',files=[path])
